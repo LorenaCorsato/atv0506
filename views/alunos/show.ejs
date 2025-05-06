@@ -1,0 +1,29 @@
+<h1>Alunos</h1>
+
+<a href="/alunos/add" class="btn btn-success mb-3">Adicionar Novo Aluno</a>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Curso</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% alunos.forEach(aluno => { %>
+      <tr>
+        <td><%= aluno.id %></td>
+        <td><%= aluno.nome %></td>
+        <td><%= aluno.Curso ? aluno.Curso.nome : 'Sem curso' %></td>
+        <td>
+          <a href="/alunos/edit/<%= aluno.id %>" class="btn btn-warning btn-sm">Editar</a>
+          <form action="/alunos/delete/<%= aluno.id %>" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Deseja mesmo excluir este aluno?')">Excluir</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
